@@ -77,8 +77,8 @@ function addNewQuestion() {
         list.unshift(document.getElementById('newQuestion').value);
         document.getElementById('card-content').insertAdjacentHTML('beforebegin',
             `<div class="card mb-6 p-4" id="card-content">
-        <p class="is-size-4"><b> ${list[0]} </b ></p>- <footer class="card-footer" id='status'>
-        ${'Not yet'}
+        <p class="is-size-4"><b> ${list[0].question} </b ></p>- <footer class="card-footer" id='status'>
+        ${list[0].status == 'Not yet'}
         </footer> 
         </div > `);
         return document.getElementById('newQuestion').value = '';
@@ -88,9 +88,14 @@ function addNewQuestion() {
 
 
 function showNotYetOnly() {
-    document.getElementById('card-content').innerHTML = '';
-    const filterQuestionsFalse = list.filter(el => el.status == 'Not yet');
-    filterQuestionsFalse.forEach(renderQuestions);
+    let filter = document.getElementById('filter');
+    if (filter.checked) {
+        document.getElementById('card-content').innerHTML = '';
+        const filterQuestionsFalse = list.filter(el => el.status == 'Not yet');
+        filterQuestionsFalse.forEach(renderQuestions);
+    }
+    else { showAll() }
+
 
 };
 
@@ -100,12 +105,12 @@ function showAll() {
 
 };
 
-function showGotItOnly() {
-    document.getElementById('card-content').innerHTML = '';
-    const filterQuestionsTrue = list.filter(el => el.status == 'Got it');
-    filterQuestionsTrue.forEach(renderQuestions);
+// function showGotItOnly() {
+//     document.getElementById('card-content').innerHTML = '';
+//     const filterQuestionsTrue = list.filter(el => el.status == 'Got it');
+//     filterQuestionsTrue.forEach(renderQuestions);
 
-};
+// };
 
 
 

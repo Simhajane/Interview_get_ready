@@ -11,23 +11,32 @@
 
 <body>
     <br>
-    <div class="columns is-mobile is-centered">
+    <div class="titles" class="is-flex is-justify-content-center is-align-items-center">
+        <p class="title is-2 " style="color: rgb(33, 33, 125); text-align: center;">Javascript Questionnaire</p>
+        <p class="subtitle is-5" style="color: rgb(68, 68, 127); text-align: center;">Evaluate your knowledge of
+            Javascript. No
+            rush, no judgement</p>
+    </div>
+    <div class="columns">
 
-        <div class="column is-half">
-            <div class="titles" class="is-flex is-justify-content-center is-align-items-center">
-                <p class="title is-2 " style="color: rgb(33, 33, 125); text-align: center;">Javascript Questionnaire</p>
-                <p class="subtitle is-5" style="color: rgb(68, 68, 127); text-align: center;">Evaluate your knowledge of
-                    Javascript. No
-                    rush, no judgement</p>
+        <div class="column p-6">
+
+            <br>
+            <div id="card-content">
+
             </div>
-            <br>
+            <footer id='status'>
 
-            <button class="button is-info" onclick="showAll()">Show all</button>
-            <button class="button is-success " onclick="showGotItOnly()">Got it</button>
-            <button class="button is-danger " onclick="showNotYetOnly()">Not yet</button>
+            </footer>
+        </div>
+        <div class="column p-6">
+
+
+
             <br>
+            <textarea class="textarea is-warning " placeholder="Write new question here" id="newQuestion"></textarea>
             <button class="button is-warning mt-4 mb-4" onclick="addNewQuestion()">Add new question</button>
-            <textarea class="textarea is-warning" placeholder="Write new question here" id="newQuestion"></textarea>
+
             <div class="control">
                 <p class="subtitle is-6 mt-4">Do you know the answer?</p>
                 <label class="radio">
@@ -39,18 +48,17 @@
                     No
                 </label>
             </div>
-            <br>
-            <br>
-            <br>
 
-            <div id="card-content">
 
-            </div>
-            <footer id='status'>
+            <label class="checkbox mt-6">
+                <input type="checkbox" id="filter" onclick="showNotYetOnly()">
+                Hide questions that I've learned </label>
 
-            </footer>
         </div>
     </div>
+
+
+
 
 
 
