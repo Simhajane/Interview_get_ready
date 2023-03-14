@@ -1,5 +1,5 @@
 const list = [
-    { question: 'Explain event delegation', status: 'Not yet' },
+    { question: 'Explain event delegation', status: 'Got it' },
     { question: 'Explain how this works in JavaScript.', status: 'Not yet' },
     { question: 'Explain how prototypal inheritance works.', status: 'Not yet' },
     { question: 'Whats the difference between a variable that is: null, undefined or undeclared?', status: 'Got it' },
@@ -48,12 +48,65 @@ const list = [
 
 ];
 
-list.forEach(el => {
+const renderQuestions = (el, i) =>
     document.getElementById('card-content').insertAdjacentHTML('beforeEnd',
         `<div class="card mb-6 p-4" id="card-content">
-    <p class="is-size-4"><b>${el.question}</b></p>- <footer class="card-footer" id='status'>
+    <p class="is-size-4"><b>${i + 1} . ${el.question}</b></p>- <footer class="card-footer" id='status'>
     ${el.status}
     </footer>
     </div>`);
-});
 
+
+function addNewQuestion() {
+
+    if (yes.checked) {
+
+        list.unshift(document.getElementById('newQuestion').value);
+        document.getElementById('card-content').insertAdjacentHTML('beforebegin',
+            `<div class="card mb-6 p-4" id="card-content">
+        <p class="is-size-4"><b> ${list[0]} </b ></p>- <footer class="card-footer" id='status'>
+        ${'Got it'}
+        </footer> 
+        </div > `);
+
+        return document.getElementById('newQuestion').value = '';
+
+
+
+    } if (no.checked) {
+        list.unshift(document.getElementById('newQuestion').value);
+        document.getElementById('card-content').insertAdjacentHTML('beforebegin',
+            `<div class="card mb-6 p-4" id="card-content">
+        <p class="is-size-4"><b> ${list[0]} </b ></p>- <footer class="card-footer" id='status'>
+        ${'Not yet'}
+        </footer> 
+        </div > `);
+        return document.getElementById('newQuestion').value = '';
+    }
+
+}
+
+
+function showNotYetOnly() {
+    document.getElementById('card-content').innerHTML = '';
+    const filterQuestionsFalse = list.filter(el => el.status == 'Not yet');
+    filterQuestionsFalse.forEach(renderQuestions);
+
+};
+
+function showAll() {
+    document.getElementById('card-content').innerHTML = '';
+    list.forEach(renderQuestions);
+
+};
+
+function showGotItOnly() {
+    document.getElementById('card-content').innerHTML = '';
+    const filterQuestionsTrue = list.filter(el => el.status == 'Got it');
+    filterQuestionsTrue.forEach(renderQuestions);
+
+};
+
+
+
+showAll();
