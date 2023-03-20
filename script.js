@@ -48,15 +48,18 @@ const list = [
 
 ];
 
-const renderQuestions = (el, i) =>
+// Рендер питань в HTML
+const renderQuestions = (questionCard, index) =>
     document.getElementById('card-content').insertAdjacentHTML('beforeEnd',
         `<div class="card mb-6 p-4" id="card-content">
-    <p class="is-size-4"><b>${i + 1} . ${el.question}</b></p>- <footer class="card-footer" id='status'>
-    ${el.status}
+    <p class="is-size-4"><b>${index + 1} . ${questionCard.question}</b></p>- <footer class="card-footer" id='status'>
+    ${questionCard.status}
     </footer>
     </div>`);
 
 
+
+// Додавання нового питання до списку
 function addNewQuestion() {
 
     if (yes.checked) {
@@ -86,12 +89,12 @@ function addNewQuestion() {
 
 }
 
-
+// Фільтр питань за статусом, будуть показані лише не вивчені
 function showNotYetOnly() {
     let filter = document.getElementById('filter');
     if (filter.checked) {
         document.getElementById('card-content').innerHTML = '';
-        const filterQuestionsFalse = list.filter(el => el.status == 'Not yet');
+        const filterQuestionsFalse = list.filter(questionCard => questionCard.status == 'Not yet');
         filterQuestionsFalse.forEach(renderQuestions);
     }
     else { showAll() }
@@ -99,19 +102,16 @@ function showNotYetOnly() {
 
 };
 
+
+// Показати всі питання
 function showAll() {
     document.getElementById('card-content').innerHTML = '';
     list.forEach(renderQuestions);
 
 };
 
-// function showGotItOnly() {
-//     document.getElementById('card-content').innerHTML = '';
-//     const filterQuestionsTrue = list.filter(el => el.status == 'Got it');
-//     filterQuestionsTrue.forEach(renderQuestions);
-
-// };
-
 
 
 showAll();
+
+
