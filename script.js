@@ -52,7 +52,7 @@ const list = [
 const renderQuestions = (questionCard, index) =>
     document.getElementById('card-content').insertAdjacentHTML('beforeEnd',
         `<div class="card mb-6 p-4" id="card-content">
-<<<<<<< HEAD
+
             <p class="is-size-4" id="question_body">
                 <b>${index + 1} . ${questionCard.question}</b>
             </p></div > `);
@@ -76,12 +76,8 @@ if (list.status == false) {
 
 
 
-=======
-    <p class="is-size-4"><b>${index + 1} . ${questionCard.question}</b></p>- <footer class="card-footer" id='status'>
-    ${questionCard.status}
-    </footer>
-    </div>`);
->>>>>>> e07bf57e94a15c2a4f318c40d75889c9994caa91
+
+
 
 
 
@@ -128,7 +124,6 @@ function showNotYetOnly() {
 
 };
 
-<<<<<<< HEAD
 // function questionStatus() {
 
 //     if (list.status == true) {
@@ -148,10 +143,8 @@ function showNotYetOnly() {
 
 
 
-=======
 
 // Показати всі питання
->>>>>>> e07bf57e94a15c2a4f318c40d75889c9994caa91
 function showAll() {
     document.getElementById('card-content').innerHTML = '';
     list.forEach(renderQuestions);
