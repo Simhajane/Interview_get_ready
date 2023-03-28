@@ -1,6 +1,6 @@
 const list = [
-    { question: 'Explain event delegation', status: 'Got it' },
-    { question: 'Explain how this works in JavaScript.', status: 'Not yet' },
+    { question: 'Explain event delegation', status: true },
+    { question: 'Explain how this works in JavaScript.', status: false },
     { question: 'Explain how prototypal inheritance works.', status: 'Not yet' },
     { question: 'Whats the difference between a variable that is: null, undefined or undeclared?', status: 'Got it' },
     { question: 'What is a closure, and how/why would you use one?', status: 'Not yet' },
@@ -48,13 +48,33 @@ const list = [
 
 ];
 
-const renderQuestions = (el, i) =>
+// Рендер питань в HTML
+const renderQuestions = (questionCard, index) =>
     document.getElementById('card-content').insertAdjacentHTML('beforeEnd',
         `<div class="card mb-6 p-4" id="card-content">
-    <p class="is-size-4"><b>${i + 1} . ${el.question}</b></p>- <footer class="card-footer" id='status'>
-    ${el.status}
-    </footer>
-    </div>`);
+            <p class="is-size-4" id="question_body">
+                <b>${index + 1} . ${questionCard.question}</b>
+            </p></div > `);
+if (list.status == false) {
+
+    document.getElementById('question_body').insertAdjacentHTML('beforeEnd',
+        `<footer class="card-footer" id='status'>
+        ${'Got it'}
+        </footer> `
+    );
+}
+// else {
+//     document.getElementById('question_body').insertAdjacentHTML('beforeEnd',
+//         `<footer class="card-footer" id='status'>
+//     ${'not'}
+//     </footer> `
+//     );
+// }
+// ${questionStatus()}
+
+
+
+
 
 
 function addNewQuestion() {
@@ -63,8 +83,8 @@ function addNewQuestion() {
 
         list.unshift(document.getElementById('newQuestion').value);
         document.getElementById('card-content').insertAdjacentHTML('beforebegin',
-            `<div class="card mb-6 p-4" id="card-content">
-        <p class="is-size-4"><b> ${list[0]} </b ></p>- <footer class="card-footer" id='status'>
+            `< div class="card mb-6 p-4" id = "card-content" >
+        <p class="is-size-4"><b> ${list[0]} </b ></p> <footer class="card-footer" id='status'>
         ${'Got it'}
         </footer> 
         </div > `);
@@ -76,10 +96,10 @@ function addNewQuestion() {
     } if (no.checked) {
         list.unshift(document.getElementById('newQuestion').value);
         document.getElementById('card-content').insertAdjacentHTML('beforebegin',
-            `<div class="card mb-6 p-4" id="card-content">
-        <p class="is-size-4"><b> ${list[0].question} </b ></p>- <footer class="card-footer" id='status'>
+            `< div class="card mb-6 p-4" id = "card-content" >
+    <p class="is-size-4"><b> ${list[0].question} </b ></p> - <footer class="card-footer" id='status'>
         ${list[0].status == 'Not yet'}
-        </footer> 
+    </footer> 
         </div > `);
         return document.getElementById('newQuestion').value = '';
     }
@@ -98,6 +118,25 @@ function showNotYetOnly() {
 
 
 };
+
+// function questionStatus() {
+
+//     if (list.status == true) {
+//         return (
+
+//             '<span class="has-background-primary-dark">Розібралася</span>'
+//         )
+//     }
+//     else {
+//         return (
+
+//             'Не Розібралася'
+//         )
+//     }
+// }
+
+
+
 
 function showAll() {
     document.getElementById('card-content').innerHTML = '';
