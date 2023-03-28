@@ -52,6 +52,7 @@ const list = [
 const renderQuestions = (questionCard, index) =>
     document.getElementById('card-content').insertAdjacentHTML('beforeEnd',
         `<div class="card mb-6 p-4" id="card-content">
+<<<<<<< HEAD
             <p class="is-size-4" id="question_body">
                 <b>${index + 1} . ${questionCard.question}</b>
             </p></div > `);
@@ -75,8 +76,16 @@ if (list.status == false) {
 
 
 
+=======
+    <p class="is-size-4"><b>${index + 1} . ${questionCard.question}</b></p>- <footer class="card-footer" id='status'>
+    ${questionCard.status}
+    </footer>
+    </div>`);
+>>>>>>> e07bf57e94a15c2a4f318c40d75889c9994caa91
 
 
+
+// Додавання нового питання до списку
 function addNewQuestion() {
 
     if (yes.checked) {
@@ -106,12 +115,12 @@ function addNewQuestion() {
 
 }
 
-
+// Фільтр питань за статусом, будуть показані лише не вивчені
 function showNotYetOnly() {
     let filter = document.getElementById('filter');
     if (filter.checked) {
         document.getElementById('card-content').innerHTML = '';
-        const filterQuestionsFalse = list.filter(el => el.status == 'Not yet');
+        const filterQuestionsFalse = list.filter(questionCard => questionCard.status == 'Not yet');
         filterQuestionsFalse.forEach(renderQuestions);
     }
     else { showAll() }
@@ -119,6 +128,7 @@ function showNotYetOnly() {
 
 };
 
+<<<<<<< HEAD
 // function questionStatus() {
 
 //     if (list.status == true) {
@@ -138,19 +148,18 @@ function showNotYetOnly() {
 
 
 
+=======
+
+// Показати всі питання
+>>>>>>> e07bf57e94a15c2a4f318c40d75889c9994caa91
 function showAll() {
     document.getElementById('card-content').innerHTML = '';
     list.forEach(renderQuestions);
 
 };
 
-// function showGotItOnly() {
-//     document.getElementById('card-content').innerHTML = '';
-//     const filterQuestionsTrue = list.filter(el => el.status == 'Got it');
-//     filterQuestionsTrue.forEach(renderQuestions);
-
-// };
-
 
 
 showAll();
+
+
