@@ -135,10 +135,10 @@ function showAll() {
 showAll();
 
 const statusField = document.querySelectorAll("#card-content > div");
-// console.log(statusField);
+console.log(statusField);
 statusField.forEach((el) => {
-    // console.log(button);
-    el.addEventListener('click', console.log(showAll()));
+    console.log(el.index);
+    el.addEventListener('click', showAll());
 
 
 });
