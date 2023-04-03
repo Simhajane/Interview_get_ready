@@ -10,46 +10,36 @@
 </head>
 
 <body>
-    <br>
-    <div class="titles" class="is-flex is-justify-content-center is-align-items-center">
-        <p class="title is-2  has-text-info-dark has-text-centered">Javascript Questionnaire</p>
-        <p class="subtitle is-5 has-text-info has-text-centered	">
-            Evaluate your
-            knowledge of
-            Javascript. No
-            rush, no judgement</p>
-    </div>
-    <div class="columns">
 
-        <div class="column p-6 is-two-thirds" id="card-content"></div>
+    <div class="container is-max-widescreen ">
+        <section class="hero is-primary ">
+            <div class="hero-body">
+                <span class="navbar-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2048px-Unofficial_JavaScript_logo_2.svg.png"
+                        alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" height="48">
+                    <p class="title is-3  has-text-info-dark  ml-4">Javascript Questionnaire</p>
 
-        <div class="column p-6">
-
-            <textarea class="textarea is-warning mt-5" placeholder="Write new question here"
-                id="newQuestion"></textarea>
-            <button class="button is-warning mt-4 mb-4" onclick="addNewQuestion()">Add new question</button>
-
-            <div class="control">
-                <p class="subtitle is-6 mt-4">Do you know the answer?</p>
-                <label class="radio">
-                    <input type="radio" name="answer" id="yes">
-                    Yes
-                </label>
-                <label class="radio">
-                    <input type="radio" name="answer" id="no">
-                    No
-                </label>
+                </span>
+                <p class="subtitle  ml-2">
+                    Everything you need to get ready for an interview
+                </p>
             </div>
+        </section>
+        <div class="columns mt-2 ">
+            <div class="column  is-two-thirds" id="card-content"></div>
+            <div class="column ">
+                <div class="card mb-6 p-4"><label class="checkbox ">
+                        <input type="checkbox" id="filter" onclick="showNotYetOnly()">
+                        <b>Hide questions that I've learned</b>
+                    </label></div>
 
-
-            <label class="checkbox mt-6">
-                <input type="checkbox" id="filter" onclick="showNotYetOnly()">
-                Hide questions that I've learned 
-            </label>
-
+                <textarea class="textarea  is-warning has-background-warning-light	"
+                    placeholder="Write new question here" id="newQuestion"></textarea>
+                <button class="button is-warning is-fullwidth mt-4 mb-4" onclick="addNewQuestion()">Add new
+                    question</button>
+            </div>
         </div>
     </div>
-
     <script src="./script.js"></script>
 </body>
 
