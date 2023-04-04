@@ -131,17 +131,17 @@ function showAll() {
 
 };
 
-
+const statusField = document.getElementById("bbb");
+console.log(statusField);
+statusField.addEventListener('click', function () { console.log('1') });
+// console.log(el.index);
+// el.addEventListener('click', alert(1));
 showAll();
 
-const statusField = document.querySelectorAll("#card-content > div");
-console.log(statusField);
-statusField.forEach((el) => {
-    console.log(el.index);
-    el.addEventListener('click', showAll());
 
 
-});
+
+
 
 
 
