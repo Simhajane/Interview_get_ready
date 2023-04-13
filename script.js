@@ -69,33 +69,19 @@ const renderQuestions = (questionCard, index) => {
 function questionStatus(questionCard) {
 
     if (questionCard.status == true) {
-        return `<button class="button is-fullwidth has-background-primary-light status	has-text-success-dark">
+        return `<button class="button is-fullwidth has-background-primary-light has-text-success-dark">
        I know the answer
     </button> `
 
     }
     else {
-        return `<button class="button is-fullwidth has-background-danger-light	status has-text-danger-dark">
+        return `<button class="button is-fullwidth has-background-danger-light has-text-danger-dark">
         Don't know the answer yet
      </button> `
     }
 }
 
 
-function changeStatus(questionCard) {
-    if (questionCard.status == true) {
-        return `<button class="button is-fullwidth has-background-primary-light	status has-text-success-dark">
-        Don't know the answer yet
-     </button> `
-    }
-    else {
-        return `<button class="button is-fullwidth has-background-danger-light	status has-text-danger-dark">
-        I know the answer
-     </button> `
-    }
-    list.forEach(renderQuestions);
-
-}
 
 
 // Додавання нового питання до списку
@@ -131,14 +117,29 @@ function showAll() {
 
 };
 
-const statusField = document.getElementById("bbb");
-console.log(statusField);
-statusField.addEventListener('click', function () { console.log('1') });
-// console.log(el.index);
-// el.addEventListener('click', alert(1));
+
+
 showAll();
 
+const statusField = document.querySelectorAll("#card-content > div > p.card-footer.is-size-4 > button");
+// console.log(statusField);
+statusField.forEach(el => el.addEventListener('click', changeStatus));
 
+function changeStatus() {
+    statusField.forEach(el => {
+        if (el.innerHTML.value == 'I know the answer') {
+            return `<button class="button is-fullwidth has-background-danger-light	 has-text-danger-dark">
+        Don't know the answer yet
+     </button> `
+        }
+        else {
+            return `<button class="button is-fullwidth has-background-primary-light	 has-text-success-dark" >
+        I know the answer
+     </button> `
+        }
+    })
+    // alert(123)
+}
 
 
 
